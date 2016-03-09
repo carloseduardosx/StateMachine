@@ -1,7 +1,6 @@
 package com.carloseduardo.state.machine.action
 
 import com.carloseduardo.state.machine.constants.State
-import com.sun.javaws.exceptions.InvalidArgumentException
 
 class StateAction {
 
@@ -47,6 +46,6 @@ class StateAction {
             }
         }
 
-        throw InvalidArgumentException(arrayOf(input))
+        return State.INVALID
     }
 }

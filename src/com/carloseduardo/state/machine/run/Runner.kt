@@ -4,7 +4,6 @@ import com.carloseduardo.state.machine.action.StateAction
 import com.carloseduardo.state.machine.constants.State
 import com.carloseduardo.state.machine.validation.StateValidation
 import com.sun.javaws.exceptions.InvalidArgumentException
-import kotlin.system.exitProcess
 
 class Runner {
 
@@ -18,7 +17,7 @@ class Runner {
         println("1- Input Production")
         println("2- Leave")
 
-        print("\nWrite a value to insert: ")
+        print("\nChoose an option: ")
         executeAction(readLine())
     }
 
@@ -26,13 +25,13 @@ class Runner {
 
         action ?: throw InvalidArgumentException(arrayOf())
 
-        Runtime.getRuntime().exec("clear")
+        Runtime.getRuntime().exec("/bin/bash clear")
 
         when (action) {
 
             inputProduction -> treatProduction()
 
-            leave -> exitProcess(success)
+            leave -> System.exit(success)
 
             else -> println("Invalid Option! Please select a valid option.")
         }
@@ -48,10 +47,17 @@ class Runner {
         production?.forEach { currentState = StateAction().treatInput(currentState, it.toString()) }
 
         if (StateValidation(currentState).isFinalState()) {
-            println("Production is valid!")
+
+            println("Production is valid!\n")
+        } else if (StateValidation(currentState).isInvalidState()) {
+
+            println("Please insert a valid production!\n")
         } else {
-            println("Production invalid!")
+
+            println("Production invalid!\n")
         }
+
+        currentState = State.Q0
     }
 
     fun run() {

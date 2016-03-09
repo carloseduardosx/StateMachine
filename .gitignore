@@ -4,3 +4,6 @@
 
 # Generated Files
 target
+
+# Executable Files
+*.jar
