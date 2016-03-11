@@ -31,7 +31,7 @@ class Runner {
 
         action ?: throw InvalidArgumentException(arrayOf())
 
-        Runtime.getRuntime().exec("/bin/bash clear")
+        cleanConsole()
 
         when (action) {
 
@@ -45,6 +45,10 @@ class Runner {
         }
 
         showActions()
+    }
+
+    private fun cleanConsole() {
+        ProcessBuilder("clear").inheritIO().start().waitFor()
     }
 
     private fun showAlphabetic() {
