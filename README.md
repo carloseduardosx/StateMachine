@@ -2,11 +2,15 @@
 
 A simple implementation of a State Machine
 
+# Preview
+
+![State Machine](https://github.com/carloseduardosx/StateMachine/blob/master/img/StateMachine.gif)
+
 # How To Use
 
 Execute the script **run.sh**
 
-> OBS: You should have **Kotlin CLI** installed and added in your path
+> You should have **Kotlin CLI** installed and added in your path
 
 # How To Install Kotlin CLI
 
@@ -22,11 +26,9 @@ A easy way to install Kotlin CLI on *UNIX based systems* is using **SDKMAN**
 
 Execute the following commands in your terminal:
 
-> `curl -s get.sdkman.io | bash`
-
-> **Reload your terminal and install Kotlin with:**
-
-> `sdk install kotlin`
+1. `curl -s get.sdkman.io | bash`
+2. *Reload your terminal*
+3. Install Kotlin with:`sdk install kotlin`
 
 ### Windows
 
