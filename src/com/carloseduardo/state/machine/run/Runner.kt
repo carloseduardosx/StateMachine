@@ -41,7 +41,7 @@ class Runner {
 
             leave -> System.exit(success)
 
-            else -> println("Invalid Option! Please select a valid option.")
+            else -> println("Invalid Option! Please select a valid option.\n")
         }
 
         showActions()
@@ -54,7 +54,7 @@ class Runner {
     private fun showAlphabetic() {
 
         println(Automaton.STATUS_LABEL)
-        println(Automaton.STATES.format(State.Q0, State.Q1, State.Q2, State.Q3))
+        println(Automaton.STATES.format(State.Q0, State.Q1.name + " - F", State.Q2.name + " - F", State.Q3))
         println(Automaton.SYMBOLS_LABEL)
         println(Automaton.SYMBOLS.format("0", "1", "2"))
         println(Automaton.TRANSITIONS_LABEL)
@@ -72,26 +72,28 @@ class Runner {
 
             currentState = StateAction().treatInput(currentState, it.toString())
 
-            println(" - Passing sentence $it the Current State is: $currentState")
+            println(" - Passing symbol $it... Now the Current State is: $currentState")
 
             if (currentState == State.INVALID) {
 
                 println("\nThe current state is ${State.INVALID}\n" +
                         "That means which your sentence is invalid\n" +
                         "Please insert a valid sentence!\n")
+
+                currentState = State.Q0
                 return
             };
         }
 
         if (StateValidation(currentState).isFinalState()) {
 
-            println("Production is valid!\n")
+            println("\nSentence is valid!\n")
         } else if (StateValidation(currentState).isInvalidState()) {
 
-            println("Please insert a valid sentence!\n")
+            println("\nPlease insert a valid sentence!\n")
         } else {
 
-            println("Production invalid!\n")
+            println("\nSentence invalid!\n")
         }
 
         currentState = State.Q0
