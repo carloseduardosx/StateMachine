@@ -38,4 +38,4 @@ Perfom the following steps to install Kotlin CLI:
 
 1. Download the [Kotlin compiler zip](https://github.com/JetBrains/kotlin/releases/download/build-1.0.0-rc-1036/kotlin-compiler-1.0.0-rc-1036.zip)
 2. Unzip the standalone compiler into a directory and optionally add the `bin` directory to the **system path**
-3. Reload your **MS-DOS** and then be happy :smile:
+3. Reload your **CMD** and then be happy :smile:
