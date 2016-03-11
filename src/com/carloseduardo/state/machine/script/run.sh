@@ -3,7 +3,7 @@
 kotlinc ../Main.kt \
 ../action/StateAction.kt \
 ../constants/State.kt \
-../constants/Symbols.kt \
+../constants/Automaton.kt \
 ../run/Runner.kt \
 ../validation/StateValidation.kt \
 -include-runtime -d State.jar
