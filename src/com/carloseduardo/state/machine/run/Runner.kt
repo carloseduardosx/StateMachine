@@ -77,7 +77,8 @@ class Runner {
             if (currentState == State.INVALID) {
 
                 println("\nThe current state is ${State.INVALID}\n" +
-                        "That means which your sentence is invalid\n" +
+                        "Is invalid because the $it not exist in alphabet!\n" +
+                        "That means which your sentence is invalid!\n" +
                         "Please insert a valid sentence!\n")
 
                 currentState = State.Q0
@@ -88,12 +89,9 @@ class Runner {
         if (StateValidation(currentState).isFinalState()) {
 
             println("\nSentence is valid!\n")
-        } else if (StateValidation(currentState).isInvalidState()) {
-
-            println("\nPlease insert a valid sentence!\n")
         } else {
 
-            println("\nSentence invalid!\n")
+            println("\nSentence invalid!\n$currentState is not a final state!\n")
         }
 
         currentState = State.Q0
