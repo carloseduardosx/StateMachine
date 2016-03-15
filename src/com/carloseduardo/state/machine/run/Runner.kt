@@ -9,7 +9,7 @@ import com.sun.javaws.exceptions.InvalidArgumentException
 class Runner {
 
     private var currentState = State.Q0
-    private val inputProduction = "1"
+    private val inputSentence = "1"
     private val showStateMachineInformation = "2";
     private val leave = "3"
     private val success = 1
@@ -35,9 +35,9 @@ class Runner {
 
         when (action) {
 
-            inputProduction -> treatSentence()
+            inputSentence -> treatSentence()
 
-            showStateMachineInformation -> showAlphabetic()
+            showStateMachineInformation -> showInformation()
 
             leave -> System.exit(success)
 
@@ -51,7 +51,7 @@ class Runner {
         ProcessBuilder("clear").inheritIO().start().waitFor()
     }
 
-    private fun showAlphabetic() {
+    private fun showInformation() {
 
         println(Automaton.STATUS_LABEL)
         println(Automaton.STATES.format(State.Q0, State.Q1.name + " - F", State.Q2.name + " - F", State.Q3))
@@ -76,10 +76,11 @@ class Runner {
 
             if (currentState == State.INVALID) {
 
-                println("\nThe current state is ${State.INVALID}\n" +
-                        "Is invalid because the $it not exist in alphabet!\n" +
-                        "That means which your sentence is invalid!\n" +
-                        "Please insert a valid sentence!\n")
+                val errorMessage = "\nInvalid symbol because the $it not exist in alphabet!"
+                        .plus("\nThat means which your sentence is invalid!")
+                        .plus("\nPlease insert a valid sentence!\n");
+
+                println(errorMessage)
 
                 currentState = State.Q0
                 return
